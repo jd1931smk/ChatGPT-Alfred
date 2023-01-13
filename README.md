@@ -6,6 +6,10 @@ How to Integrate ChatGPT with AlfredApp
 
 2.) Download the tampermonkey extension for your browser [TamperMonkey](https://www.tampermonkey.net/)
   - Import this userscript and activate it: https://github.com/lyr1cx/ChatGPT-Alfred/blob/main/chatgpt_tampermonkey_user_script.js
+-------------------------  
+
+Download the release package here with both above: https://github.com/lyr1cx/ChatGPT-Alfred/releases/latest
+
  -----------------------------------------
  
   **Usage/Syntax:**
