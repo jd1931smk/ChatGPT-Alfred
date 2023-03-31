@@ -3,28 +3,31 @@
 // @description Query ChatGPT from Alfred.
 // @match       https://chat.openai.com/chat*
 // @grant       none
-// @version     1.0
+// @version     1.01
 // ==/UserScript==
 
 const inputSelector = "textarea[data-id='root']"
+const buttonSelector = "button[disabled]:not([class*='opacity-0'])";
 
 // setInterval until inputSelector is on the page
 const interval = setInterval(() => {
-  const inputEl = document.querySelector(inputSelector)
-  if (inputEl) {
-    clearInterval(interval)
+  const inputEl = document.querySelector(inputSelector);
+  const sendButton = document.querySelector(buttonSelector);
+
+  if (inputEl && sendButton) {
+    clearInterval(interval);
     // Parse the "q" param from the query string
-    const urlObj = new URL(window.location.href)
-    const q = urlObj.searchParams.get("q")
-    if (!q) return
+    const urlObj = new URL(window.location.href);
+    const q = urlObj.searchParams.get("q");
+    if (!q) return;
 
     // Set the input field to the value of the "q" param
-    inputEl.value = q
+    inputEl.value = q;
 
-    // Submit the form
-    // const form = inputEl.closest("form")
-    // form.dispatchEvent(new Event("submit")) // eslint-disable-line no-undef
-    const button = inputEl.nextElementSibling
-    button.click()
+    // Find the send button and click it after a delay
+    setTimeout(() => {
+      sendButton.removeAttribute('disabled');
+      sendButton.click();
+    }, 500); // You can adjust the delay before clicking the button
   }
-}, 500)
+}, 500);
